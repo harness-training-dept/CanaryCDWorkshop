@@ -23,6 +23,6 @@
 
 4. Click on Services to add our first service to this application, then click on the Add Service button. Give your service a name that includes your student ID (as you did with the application) and set the Deployment Type to Kubernetes.
 
-![Add Service](/images/add_service.jpg)
+![Add Service](/images/add_service_can.jpg)
 
 Click submit. That will take you to the Service Overview.
