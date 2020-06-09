@@ -39,7 +39,7 @@ Click submit when done.
 
 ![edit deployment.yaml](/images/edit_deploymentyaml.jpg)
 
-Once it is in edit mode the easiest thing to do is delete everything that's currently in the file and replace it with the yaml quoted below. You can also reference this file [here:](https://github.com/harness-training-dept/CanaryCDWorkshop/blob/master/yamls/deployment.yaml)
+Once it is in edit mode the easiest thing to do is delete everything that's currently in the file and replace it with the yaml quoted below. You can also reference this file [here:](https://github.com/harness-training-dept/CanaryCDWorkshop/blob/master/yamls/deployment.yaml). Just a note please be careful in the next few steps when editing, copying, and pasting YAMLs. They are sensitive to space and special characters (welcome to Kubernetes aka "death by YAML").
 
 ```
 apiVersion: v1
@@ -150,7 +150,7 @@ spec:
 
 Once you have updated the file click on Save. 
 
-10. Ok we have one last file to update like this: the values.yaml file. Again following a similar procedure from the previous two steps, select and edit the values.yaml file. Make it look like this:
+10. Ok we have one last file to update like this: the values.yaml file. Again following a similar procedure from the previous two steps, select and edit the values.yaml file. Make it look like [this:](https://github.com/harness-training-dept/CanaryCDWorkshop/blob/master/yamls/values.yaml)
 
 ```
 name: cv-demo
