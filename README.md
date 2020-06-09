@@ -39,7 +39,7 @@ Click submit when done.
 
 ![edit deployment.yaml](/images/edit_deploymentyaml.jpg)
 
-Once it is in edit mode the easiest thing to do is delete everything that's currently in the file and replace it with this code:
+Once it is in edit mode the easiest thing to do is delete everything that's currently in the file and replace it with the yaml quoted below. You can also reference the file here: [link to file](https://github.com/harness-training-dept/CanaryCDWorkshop/blob/master/yamls/deployment.yaml)
 
 ```
 apiVersion: v1
