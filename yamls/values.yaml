@@ -1,0 +1,9 @@
+name: cv-demo
+namespace: ${infra.kubernetes.namespace}
+
+image: ${artifact.metadata.image}
+
+env:
+  config:
+    # Override in environment with ingress controller load balancer IP or host
+    ALLOWED_ORIGINS: http://acfb419eb0a5b4beea6a0f1aca17ea99-100423743.us-east-1.elb.amazonaws.com:8080
