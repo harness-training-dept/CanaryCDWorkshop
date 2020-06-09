@@ -350,8 +350,18 @@ Now we have one good deployment to compare our canaries to! Take a moment to ins
 
 ![firstprom](/images/1stprom.jpg)
 
+27. Take a 5 minute coffee / tea / beer / soda break to let our stable version build up some nice stable data in Prometheus. 
 
+28. Ok welcome back. Now we can rerun our Deployment. But this time we're going to enable verification and we're going to deploy a less stable version. Go back into the Setup screen and select your application. Then go to your Workflow and hit Deploy. Leave both variables at their defaults but this time select the Tag# unstable version of the container. Hit Deploy when done. 
 
-27. 
+![badcanary](/images/badcanary.jpg)
+
+29. While your canary deployment is running. Click on the Prometheus step to watch the verification process run. This can take a bit of time so feel free to freshen up the beverage from step 27. 
+
+![promrunnin](/images/promrunnin.jpg)
+
+30. Once the Prometheus step has completed and we realize that the artifact tagged unstable turned out to be unstable! The Canary gets marked failed and the Canary Phase Rollback step we created was run to delete the suspect Canary. 
+
+![arcan](/images/arcan.jpg)
 
 
