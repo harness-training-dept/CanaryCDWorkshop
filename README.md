@@ -97,3 +97,9 @@ spec:
           containerPort: 8080
           protocol: TCP
 ```
+
+Once you've copied and pasted the above yaml into deployment.yaml in the Harness UI click on the Save button at the top to commit your changes.
+
+8. Now we need to makes some changes to the namespace.yaml file. Click on namespace.yaml on the left hand side to select that file. Then hover your mouse over the file name. You should see 3 verticle dots. Click on those and select Rename. Change the name from namespace.yaml to ingress.yaml.
+
+![rename](/images/rename.jpg)
