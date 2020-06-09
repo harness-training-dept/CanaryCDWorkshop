@@ -329,3 +329,17 @@ All else leave as it.
 Should look exactly like this before you hit Save. 
 
 ![wfvar](/images/wfvar2.jpg)
+
+Now you're back out with a completed Canary Workflow! Well done!
+
+![wfalldone](/images/wfalldone.jpg)
+
+25. Now! we are ready to start deploying. But remember a Canary is designed to be compared to an already running microservice. So first we have to Deploy once to setup a baseline to compare our Canary to. To do this we'll run our Deployment but skip the verification stage. Scroll up to the top of the Workflow Overview screen and Click on the big blue Deploy button:
+
+![deploybang](/images/deploybang.jpg)
+
+26. That brings up our Start New Deployment screen. Change the verify_canary variable to no - this tells Harness to skip/automatically pass the Verify step. Leave metric_verification the default. Select the Tag# stable artifact.
+
+![firstgood](/images/firstgood.jpg)
+
+
