@@ -304,7 +304,7 @@ Click Submit when done. Now your Workflow should look like this:
 
 23. Now we're going to add the main deployment phase that will happen after a successful canary. To do that click on + Add Phase under Deployment Phases. You will need to select the same Service and Infrastructure as you did for the Canary Phase. 
 
-![phasephase](phasephase.jpg)
+![phasephase](/images/phasephase.jpg)
 
 Click Submit when done. Now you have a Rolling Deployment phase all setup that runs after a sucessful Canary.
 
