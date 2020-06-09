@@ -239,3 +239,7 @@ In the Phase definition select the Service and Infrastructure Definition you set
 Click submit when done. Now your Workflow screen should look like this:
 
 ![deployment screen](/images/deployscreencan.jpg)
+
+17. Ok! Now we have the Canary Deployment setup, we're going to need to setup a verification phase. This is the step where we will consult metrics from Prometheus about our Canary. (TL;DR Prometheus is an open source metrics gathering agent and engine for distributed systems.) To set this up we'll need to add a Verification step to our Workflow. In the Verify section of the workflow click on Add Step. Your screen should look something like this:
+
+![add step](/images/addsteppromcan.jpg)
