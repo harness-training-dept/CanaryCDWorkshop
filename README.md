@@ -240,7 +240,7 @@ Click submit when done. Now your Workflow screen should look like this:
 
 ![deployment screen](/images/deployscreencan.jpg)
 
-17. Ok! Now we have the Canary Deployment setup, we're going to need to setup a verification phase. This is the step where we will consult metrics from Prometheus about our Canary. (TL;DR Prometheus is an open source metrics gathering agent and engine for distributed systems.) To set this up we'll need to add a Verification step to our Workflow. In the Verify section of the workflow click on Add Step. Your screen should look something like this:
+17. Ok! Now we have the Deployment framework setup. First off we're going to configure the Canary Phase of the Workflow with a verification and rollback step. First up we're going to need to add a verification phase to our canary. (This is the step where we will consult metrics from Prometheus about our Canary. (TL;DR Prometheus is an open source metrics gathering agent and search engine for distributed systems.) To set this up we'll need to add a Verification step to our Canary Phase. In the Verify section of the Canary Phase click on Add Step. Your screen should look something like this:
 
 ![add step](/images/addsteppromcan.jpg)
 
@@ -282,9 +282,22 @@ Should look like this:
 
 ![analysis time](/images/analysistimecan.jpg)
 
-Hit Submit when done. Your Workflow should now look like this: 
+Hit Submit when done. Your Canary Phase should now look like this: 
 
 ![verifyfinal](/images/verifyfinal.jpg)
 
+20. Now we need to specify a Roll Back Setp to delete the Canary if the deployment fails. Under Rollback Steps select "Add Step" under "1. Deploy" Search for the "Delete" step by typing del into the search box. Select the Delete command and click Next.
 
+![delsearch](/images/delsearchcan.jpg)
 
+21. Give your Delete step a name and then specify ```${k8s.canaryWorkload}``` for Resources. That's a variable that specifies the Canary workload during the deployment.
+
+![candel](/images/aurevoircan.jpg)
+
+Click Submit when done. Now your Workflow should look like this:
+
+![canwf](/images/wfmore.jpg)
+
+22. Go back out of the Canary Phase of your Workflow and into the main part of your workflow. Your screen should look like this:
+
+![nophase](/images/nophase.jpg)
