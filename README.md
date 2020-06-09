@@ -243,3 +243,13 @@ Click submit when done. Now your Workflow screen should look like this:
 17. Ok! Now we have the Canary Deployment setup, we're going to need to setup a verification phase. This is the step where we will consult metrics from Prometheus about our Canary. (TL;DR Prometheus is an open source metrics gathering agent and engine for distributed systems.) To set this up we'll need to add a Verification step to our Workflow. In the Verify section of the workflow click on Add Step. Your screen should look something like this:
 
 ![add step](/images/addsteppromcan.jpg)
+
+If you don't see the Prometheus step listed just type "prom" in the search box and that should bring it up. Once it's there select it and click Next.
+
+18. Next we are going to configure the verification by specifying what metrics we're interested in. First specify the Prometheus server we setup called Prometheus CV. Next we're going to specify our first metric to monitor. 
+
+For the Metric Name specify "normal_call"
+For the Metric Type pick "Throughput" in the dropdown
+For Group Name specify "custom" 
+And for Query specify this:
+```io_harness_custom_metric_normal_call{kubernetes_pod_name="$hostName"}```
