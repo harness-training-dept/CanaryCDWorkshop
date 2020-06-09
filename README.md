@@ -216,6 +216,12 @@ Click save when you are done. Yes we know we have you just copying and pasting a
 
 When you click submit that will take you to the Environment Overview screen. 
 
-14. Add an Infrastructure Definition. Give it a name that starts with your student ID. Select Kubernetes Cluster for your Cloud Provider Type, and set the deployment type to Kubernetes. Then you can select the Cloud Provider we have setup for this workshop. We've labeled the correct one "use-this-cluster-for-the-training."
+14. Add an Infrastructure Definition. Give it a name that starts with your student ID. Select Kubernetes Cluster for your Cloud Provider Type, and set the deployment type to Kubernetes. Then you can select the Cloud Provider we have setup for this workshop. We've labeled the correct one "use-this-cluster-for-the-training." Be sure to change the Namespace setting to your student ID as well!
 
 ![infra_def](/images/envdefcan.jpg)
+
+Now that we've setup a Service (what we're deploying) and an Environment (where we're deploying). Our next step is to build the canary deployment.
+
+15. Using the popcorn trail switch to Workflows in your application. Click on the Add Workflow buttom. Give your new workflow a name that includes your student ID. Select Canary Deployment for your Workflow Type, and finally select the Environment you setup in the previous step.
+
+![workflow](/images/workflowsetupcan.jpg)
