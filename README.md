@@ -231,3 +231,7 @@ Click submit when done. Now we are in our Workflow builder. Harness has setup an
 16. First we're going to add a Deployment Phase. Under Deployment Phases click on + Add Phase
 
 ![add phase](/images/addphasecan.jpg)
+
+In the Phase definition select the Service and Infrastructure Definition you setup earlier. 
+
+![phase setup](/images/phasesetupcan.jpg)
