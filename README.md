@@ -311,3 +311,21 @@ Click Submit when done. Now you have a Rolling Deployment phase all setup that r
 24. Go back out to the main part of your Workflow to add two Workflow Variables to our workflow. Click on edit icon next to Workflow Variables.
 
 ![wfvedit](/images/workflowvar1.jpg)
+
+Then click on the + Add button and add the following two variables:
+
+Variable Name: verify_canary
+
+Default Value: yes
+
+All else leave as is. 
+
+Variable Name: metric_verification
+
+Default Value: Prometheus
+
+All else leave as it. 
+
+Should look exactly like this before you hit Save. 
+
+![wfvar](/images/wfvar2.jpg)
