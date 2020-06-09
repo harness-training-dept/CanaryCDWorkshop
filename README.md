@@ -225,3 +225,9 @@ Now that we've setup a Service (what we're deploying) and an Environment (where 
 15. Using the popcorn trail switch to Workflows in your application. Click on the Add Workflow buttom. Give your new workflow a name that includes your student ID. Select Canary Deployment for your Workflow Type, and finally select the Environment you setup in the previous step.
 
 ![workflow](/images/workflowsetupcan.jpg)
+
+Click submit when done. Now we are in our Workflow builder. Harness has setup an empty Canary template for us. Now let's fill it out.
+
+16. First we're going to add a Deployment Phase. Under Deployment Phases click on + Add Phase
+
+![add phase](/images/addphasecan.jpg)
