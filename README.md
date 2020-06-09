@@ -26,3 +26,7 @@
 ![Add Service](/images/add_service_can.jpg)
 
 Click submit. That will take you to the Service Overview.
+
+5. In the Service Overview screen click on Add Artifact Source and select Docker Registry. For Source Server select Harness Docker Hub. This is a sample connection to the public hub.docker.com domain setup automatically for harness.io. In non-training testing environments you would most likely delete this connector. For the Docker image name put harness/cv-demo . That is pointing to the Docker image we made for this lab.
+
+![source](/images/cvdemosource.png)
