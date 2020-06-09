@@ -274,5 +274,5 @@ And for Query specify this:
 
 When you're done it should look like this:
 
-![two metrics](/images/metricstomonitor.jpg)
+![two metrics](/images/metricstomonitorcan.jpg)
 
