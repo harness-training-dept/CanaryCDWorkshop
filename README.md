@@ -276,3 +276,15 @@ When you're done it should look like this:
 
 ![two metrics](/images/metricstomonitorcan.jpg)
 
+19. Set your analysis time to 5 mins and your algorhytim to "very sensitive". 
+
+Should look like this:
+
+![analysis time](/images/analysistimecan.jpg)
+
+Hit Submit when done. Your Workflow should now look like this: 
+
+![verifyfinal](/images/verifyfinal.jpg)
+
+
+
