@@ -38,3 +38,62 @@ Click submit when done.
 7. First we're going to edit the deployment.yaml file. To do this scroll down to the yaml template editor. Select deployment.yaml on the left hand side, then click on the Edit button on the right.
 
 ![edit deployment.yaml](/images/edit_deploymentyaml.jpg)
+
+Once it is in edit mode the easiest thing to do is delete everything that's currently in the file and replace it with this code:
+
+```
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{.Values.namespace}}
+---
+
+{{- if .Values.env.config}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{.Values.name}}
+data:
+{{.Values.env.config | toYaml | indent 2}}
+---
+{{- end}}
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Values.name}}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{.Values.name}}
+  template:
+    metadata:
+      labels:
+        app: {{.Values.name}}
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/path: '/metrics'
+    spec:
+      containers:
+      - name: {{.Values.name}}
+        image: {{.Values.image}}
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: 500m
+            memory: 50Mi
+        readinessProbe:
+          httpGet:
+            path: /config
+            port: http
+          initialDelaySeconds: 5
+          timeoutSeconds: 5
+          periodSeconds: 5
+          failureThreshold: 2
+        ports:
+        - name: http
+          containerPort: 8080
+          protocol: TCP
+```
