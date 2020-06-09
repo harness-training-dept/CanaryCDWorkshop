@@ -301,3 +301,13 @@ Click Submit when done. Now your Workflow should look like this:
 22. Go back out of the Canary Phase of your Workflow and into the main part of your workflow. Your screen should look like this:
 
 ![nophase](/images/nophase.jpg)
+
+23. Now we're going to add the main deployment phase that will happen after a successful canary. To do that click on + Add Phase under Deployment Phases. You will need to select the same Service and Infrastructure as you did for the Canary Phase. 
+
+![phasephase](phasephase.jpg)
+
+Click Submit when done. Now you have a Rolling Deployment phase all setup that runs after a sucessful Canary.
+
+24. Go back out to the main part of your Workflow to add two Workflow Variables to our workflow. Click on edit icon next to Workflow Variables.
+
+![wfvedit](/images/workflowvar1.jpg)
