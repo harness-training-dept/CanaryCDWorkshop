@@ -104,7 +104,7 @@ Once you've copied and pasted the above yaml into deployment.yaml in the Harness
 
 ![rename](/images/rename.jpg)
 
-9. Now that we've renamed the file, we need to update it with the following code. Please use the samne procedure you did in step 7.  First delete everything in the file then replace it with the following code:
+9. Now that we've renamed the file, we need to update it with the following code. Using a similar procedure from step 7, you're going to first delete everything in the file then replace it with the following code. Note you can also reference this code [here.](https://github.com/harness-training-dept/CanaryCDWorkshop/blob/master/yamls/ingress.yaml)
 
 ```
 #
