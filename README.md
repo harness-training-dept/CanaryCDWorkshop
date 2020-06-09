@@ -147,3 +147,19 @@ spec:
           serviceName: {{.Values.name}}-stable
           servicePort: http-stable
 ```
+
+Once you have updated the file click on Save. 
+
+10. Ok we have one last file to update like this: the values.yaml file. Again following a similar procedure from the previous two steps, select and edit the values.yaml file. Make it look like this:
+
+```
+name: cv-demo
+namespace: ${infra.kubernetes.namespace}
+
+image: ${artifact.metadata.image}
+
+env:
+  config:
+    # Override in environment with ingress controller load balancer IP or host
+    ALLOWED_ORIGINS: http://acfb419eb0a5b4beea6a0f1aca17ea99-100423743.us-east-1.elb.amazonaws.com:8080
+```
