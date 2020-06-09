@@ -29,4 +29,12 @@ Click submit. That will take you to the Service Overview.
 
 5. In the Service Overview screen click on Add Artifact Source and select Docker Registry. For Source Server select Harness Docker Hub. This is a sample connection to the public hub.docker.com domain setup automatically for harness.io. In non-training testing environments you would most likely delete this connector. For the Docker image name put harness/cv-demo . That is pointing to the Docker image we made for this lab.
 
-![source](/images/cvdemosource.png)
+![Artifact Source](/images/cvdemosource.png)
+
+Click submit when done.
+
+6. Now we need to modify the Kubernetes YAML files in the Harness deployment template to fit our canary. By default Harness initially sets up a Kubernetes deployment to be a rolling deployment we're going to change things around a bit to do a canary deployment.
+
+7. First we're going to edit the deployment.yaml file. To do this scroll down to the yaml template editor. Select deployment.yaml on the left hand side, then click on the Edit button on the right.
+
+![edit deployment.yaml](/images/edit_deploymentyaml.jpg)
