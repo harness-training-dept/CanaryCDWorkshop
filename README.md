@@ -342,4 +342,16 @@ Now you're back out with a completed Canary Workflow! Well done!
 
 ![firstgood](/images/firstgood.jpg)
 
+Hit submit when done. 
+
+![alldonefirst](/images/alldone1st.jpg)
+
+Now we have one good deployment to compare our canaries to! Take a moment to inspect the Prometheus step in your Canary Phase. You may need to scroll to left to get back over to it. 
+
+![firstprom](/images/1stprom.jpg)
+
+
+
+27. 
+
 
