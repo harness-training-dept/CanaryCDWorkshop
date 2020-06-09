@@ -150,7 +150,49 @@ spec:
 
 Once you have updated the file click on Save. 
 
-10. Ok we have one last file to update like this: the values.yaml file. Again following a similar procedure from the previous two steps, select and edit the values.yaml file. Make it look like [this:](https://github.com/harness-training-dept/CanaryCDWorkshop/blob/master/yamls/values.yaml)
+10. Now we need to follow the same procedure again but this time with service.yaml.  [Here's](https://github.com/harness-training-dept/CanaryCDWorkshop/blob/master/yamls/service.yaml) the code to replace what's already in the file:
+
+```
+#
+# Service targeting canary only
+#
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{.Values.name}}-canary
+spec:
+  type: ClusterIP
+  ports:
+  - name: http-canary
+    port: 8080
+    targetPort: http
+    protocol: TCP
+  selector:
+    app: {{.Values.name}}
+    harness.io/track: canary
+---
+#
+# Service targeting stable only
+#
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{.Values.name}}-stable
+spec:
+  type: ClusterIP
+  ports:
+  - name: http-stable
+    port: 8080
+    targetPort: http
+    protocol: TCP
+  selector:
+    app: {{.Values.name}}
+    harness.io/track: stable
+```
+
+Click save when you are done.
+
+11. Ok we have one last file to update: the values.yaml file. Again following a similar procedure from the previous three steps, select and edit the values.yaml file. Make it look like [this:](https://github.com/harness-training-dept/CanaryCDWorkshop/blob/master/yamls/values.yaml)
 
 ```
 name: cv-demo
@@ -163,3 +205,17 @@ env:
     # Override in environment with ingress controller load balancer IP or host
     ALLOWED_ORIGINS: http://acfb419eb0a5b4beea6a0f1aca17ea99-100423743.us-east-1.elb.amazonaws.com:8080
 ```
+
+Click save when you are done. Yes we know we have you just copying and pasting a bunch of stuff. If you have questions about these yamls and some more detailed specifics here, please stick around after class and ask us about them. We'll be happy to unpack them then.
+
+12. Now that we've updated the service definition we can move on to setting up the Environment we're going to deploy to. Click on your application name in the popcorn trail on the upper left of the Harness UI to return to your Application main screen. Then click on Environments to setup an environment to deploy to. 
+
+13. Click Add Environment button and give your environment a name that starts with your student ID. Set the environment type to non-production.
+
+![Environment](/images/canary-evn.jpg)
+
+When you click submit that will take you to the Environment Overview screen. 
+
+14. Add an Infrastructure Definition. Give it a name that starts with your student ID. Select Kubernetes Cluster for your Cloud Provider Type, and set the deployment type to Kubernetes. Then you can select the Cloud Provider we have setup for this workshop. We've labeled the correct one "use-this-cluster-for-the-training."
+
+![infra_def](/images/envdefcan.jpg)
