@@ -249,7 +249,30 @@ If you don't see the Prometheus step listed just type "prom" in the search box a
 18. Next we are going to configure the verification by specifying what metrics we're interested in. First specify the Prometheus server we setup called Prometheus CV. Next we're going to specify our first metric to monitor. 
 
 For the Metric Name specify "normal_call"
+
 For the Metric Type pick "Throughput" in the dropdown
+
 For Group Name specify "custom" 
+
 And for Query specify this:
 ```io_harness_custom_metric_normal_call{kubernetes_pod_name="$hostName"}```
+
+It should look like this:
+
+![promsetup1](/images/promsetupcan.jpg)
+
+Now we need to add one more Metric to Monitor. Click on the + Add button under Metrics to Monitor and add a second metric with the following values:
+
+For the Metric Name specify "error_call"
+
+For the Metric Type pick "Error" in the dropdown
+
+For Group Name specify "custom" 
+
+And for Query specify this:
+```io_harness_custom_metric_error_call{kubernetes_pod_name="$hostName"}```
+
+When you're done it should look like this:
+
+![two metrics](/images/metricstomonitor.jpg)
+
