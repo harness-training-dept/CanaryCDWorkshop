@@ -39,7 +39,7 @@ Click submit when done.
 
 ![edit deployment.yaml](/images/edit_deploymentyaml.jpg)
 
-Once it is in edit mode the easiest thing to do is delete everything that's currently in the file and replace it with the yaml quoted below. You can also reference deployment.yaml [here:](https://github.com/harness-training-dept/CanaryCDWorkshop/blob/master/yamls/deployment.yaml)
+Once it is in edit mode the easiest thing to do is delete everything that's currently in the file and replace it with the yaml quoted below. You can also reference this file [here:](https://github.com/harness-training-dept/CanaryCDWorkshop/blob/master/yamls/deployment.yaml)
 
 ```
 apiVersion: v1
@@ -103,3 +103,47 @@ Once you've copied and pasted the above yaml into deployment.yaml in the Harness
 8. Now we need to makes some changes to the namespace.yaml file. Click on namespace.yaml on the left hand side to select that file. Then hover your mouse over the file name. You should see 3 verticle dots. Click on those and select Rename. Change the name from namespace.yaml to ingress.yaml.
 
 ![rename](/images/rename.jpg)
+
+9. Now that we've renamed the file, we need to update it with the following code. Please use the samne procedure you did in step 7.  First delete everything in the file then replace it with the following code:
+
+```
+#
+# Ingress targeting canary only, at /canary/*
+#
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: {{.Values.name}}-canary
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /canary/(.*)
+        backend:
+          serviceName: {{.Values.name}}-canary
+          servicePort: http-canary
+---
+#
+# Ingress targeting stable only, at /api/*
+#
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: {{.Values.name}}-stable
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /api/(.*)
+        backend:
+          serviceName: {{.Values.name}}-stable
+          servicePort: http-stable
+```
