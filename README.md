@@ -235,3 +235,7 @@ Click submit when done. Now we are in our Workflow builder. Harness has setup an
 In the Phase definition select the Service and Infrastructure Definition you setup earlier. 
 
 ![phase setup](/images/phasesetupcan.jpg)
+
+Click submit when done. Now your Workflow screen should look like this:
+
+![deployment screen](/images/deployscreencan.jpg)
