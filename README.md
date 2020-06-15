@@ -89,7 +89,7 @@ Click submit when done. Now your Workflow screen should look like this:
 
 If you don't see the Prometheus step listed just type "prom" in the search box and that should bring it up. Once it's there select it and click Next.
 
-18. Next we are going to configure the verification by specifying what metrics we're interested in. First specify the Prometheus server we setup called Prometheus CV. Next we're going to specify our first metric to monitor. 
+14. Next we are going to configure the verification by specifying what metrics we're interested in. First specify the Prometheus server we setup called Prometheus CV. Next we're going to specify our first metric to monitor. 
 
 Now we need to add one more Metric to Monitor. Click on the + Add button under Metrics to Monitor and add a second metric with the following values:
 
@@ -119,7 +119,7 @@ When you're done it should look like this:
 
 ![two metrics](/images/metricstomonitorcan.jpg)
 
-19. Set your analysis time to 5 mins and your algorhytim to "very sensitive". 
+15. Set your analysis time to 5 mins and your algorhytim to "very sensitive". 
 
 Should look like this:
 
@@ -129,11 +129,11 @@ Hit Submit when done. Your Canary Phase should now look like this:
 
 ![verifyfinal](/images/verifyfinal.jpg)
 
-20. Now we need to specify a Roll Back Setp to delete the Canary if the deployment fails. Under Rollback Steps select "Add Step" under "1. Deploy" Search for the "Delete" step by typing del into the search box. Select the Delete command and click Next.
+16. Now we need to specify a Roll Back Setp to delete the Canary if the deployment fails. Under Rollback Steps select "Add Step" under "1. Deploy" Search for the "Delete" step by typing del into the search box. Select the Delete command and click Next.
 
 ![delsearch](/images/delsearchcan.jpg)
 
-21. Give your Delete step a name and then specify ```${k8s.canaryWorkload}``` for Resources. That's a variable that specifies the Canary workload during the deployment.
+17. Give your Delete step a name and then specify ```${k8s.canaryWorkload}``` for Resources. That's a variable that specifies the Canary workload during the deployment.
 
 ![candel](/images/aurevoircan.jpg)
 
@@ -141,17 +141,17 @@ Click Submit when done. Now your Workflow should look like this:
 
 ![canwf](/images/wfmore.jpg)
 
-22. Go back out of the Canary Phase of your Workflow and into the main part of your workflow. Your screen should look like this:
+18. Go back out of the Canary Phase of your Workflow and into the main part of your workflow. Your screen should look like this:
 
 ![nophase](/images/nophase.jpg)
 
-23. Now we're going to add the main deployment phase that will happen after a successful canary. To do that click on + Add Phase under Deployment Phases. You will need to select the same Service and Infrastructure as you did for the Canary Phase. 
+19. Now we're going to add the main deployment phase that will happen after a successful canary. To do that click on + Add Phase under Deployment Phases. You will need to select the same Service and Infrastructure as you did for the Canary Phase. 
 
 ![phasephase](/images/phasephase.jpg)
 
 Click Submit when done. Now you have a Rolling Deployment phase all setup that runs after a sucessful Canary.
 
-24. Go back out to the main part of your Workflow to add two Workflow Variables to our workflow. Click on edit icon next to Workflow Variables.
+20. Go back out to the main part of your Workflow to add two Workflow Variables to our workflow. Click on edit icon next to Workflow Variables.
 
 ![wfvedit](/images/workflowvar1.jpg)
 
@@ -177,11 +177,11 @@ Now you're back out with a completed Canary Workflow! Well done!
 
 ![wfalldone](/images/wfalldone.jpg)
 
-25. Now! we are ready to start deploying. But remember a Canary is designed to be compared to an already running microservice. So first we have to Deploy once to setup a baseline to compare our Canary to. To do this we'll run our Deployment but skip the verification stage. Scroll up to the top of the Workflow Overview screen and Click on the big blue Deploy button:
+21. Now! we are ready to start deploying. But remember a Canary is designed to be compared to an already running microservice. So first we have to Deploy once to setup a baseline to compare our Canary to. To do this we'll run our Deployment but skip the verification stage. Scroll up to the top of the Workflow Overview screen and Click on the big blue Deploy button:
 
 ![deploybang](/images/deploybang.jpg)
 
-26. That brings up our Start New Deployment screen. Change the verify_canary variable to no - this tells Harness to skip/automatically pass the Verify step. Leave metric_verification the default. Select the Tag# stable artifact.
+22. That brings up our Start New Deployment screen. Change the verify_canary variable to no - this tells Harness to skip/automatically pass the Verify step. Leave metric_verification the default. Select the Tag# stable artifact.
 
 ![firstgood](/images/firstgood.jpg)
 
@@ -193,18 +193,16 @@ Now we have one good deployment to compare our canaries to! Take a moment to ins
 
 ![firstprom](/images/1stprom.jpg)
 
-27. Take a 5 minute coffee / tea / beer / soda break to let our stable version build up some nice stable data in Prometheus. 
+23. Take a 5 minute coffee / tea / beer / soda break to let our stable version build up some nice stable data in Prometheus. 
 
-28. Ok welcome back. Now we can rerun our Deployment. But this time we're going to enable verification and we're going to deploy a less stable version. Go back into the Setup screen and select your application. Then go to your Workflow and hit Deploy. Leave both variables at their defaults but this time select the Tag# unstable version of the container. Hit Deploy when done. 
+24. Ok welcome back. Now we can rerun our Deployment. But this time we're going to enable verification and we're going to deploy a less stable version. Go back into the Setup screen and select your application. Then go to your Workflow and hit Deploy. Leave both variables at their defaults but this time select the Tag# unstable version of the container. Hit Deploy when done. 
 
 ![badcanary](/images/badcanary.jpg)
 
-29. While your canary deployment is running. Click on the Prometheus step to watch the verification process run. This can take a bit of time so feel free to freshen up the beverage from step 27. 
+25. While your canary deployment is running. Click on the Prometheus step to watch the verification process run. This can take a bit of time so feel free to freshen up the beverage from step 27. 
 
 ![promrunnin](/images/promrunnin.jpg)
 
-30. Once the Prometheus step has completed and we realize that the artifact tagged unstable turned out to be unstable! The Canary gets marked failed and the Canary Phase Rollback step we created was run to delete the suspect Canary. 
+26. Once the Prometheus step has completed and we realize that the artifact tagged unstable turned out to be unstable! The Canary gets marked failed and the Canary Phase Rollback step we created was run to delete the suspect Canary. 
 
 ![arcan](/images/arcan.jpg)
-
-
