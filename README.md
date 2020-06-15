@@ -33,11 +33,21 @@ Click submit. That will take you to the Service Overview.
 
 Click submit when done.
 
-6. Now we need to modify the Kubernetes YAML files in the Harness deployment template to fit our canary. By default Harness initially sets up a Kubernetes deployment to be a rolling deployment we're going to change things around a bit to do a canary deployment.
+6. Now we need to hook our service up to a directory in Github which contains the yamls to install our demo application. To do this click on the three little dots in the upper right hand corner of the Manifests sections and select Link Remote Manifests
 
-7. First we're going to edit the deployment.yaml file. To do this scroll down to the yaml template editor. Select deployment.yaml on the left hand side, then click on the Edit button on the right.
+![remote manifests](/images/linkremote.jpg)
 
-![edit deployment.yaml](/images/edit_deploymentyaml.jpg)
+7. Provide Harness with the information to find the remote manifests on Gitbut. We are using normal K8s Resource YAMLs in a Go Template format - the same as we use in the Harness UI. We've already setup a Connector to the our Github account for you. Fill out the form like this:
+
+Set the Manifest Format to ```Kubernetes Resource Specs in YAML format```
+
+Set the Source Repository to ```CVProm (https://github.com/harness-training-dept/cvprom)```
+
+Set the Branch to ```master```
+
+Set the File/Folder path to ```workload```
+
+![edit deployment.yaml](/images/remotemanifests.jpg)
 
 Once it is in edit mode the easiest thing to do is delete everything that's currently in the file and replace it with the yaml quoted below. You can also reference this file [here:](https://github.com/harness-training-dept/CanaryCDWorkshop/blob/master/yamls/deployment.yaml). Just a note please be careful in the next few steps when editing, copying, and pasting YAMLs. They are sensitive to space and special characters (welcome to Kubernetes aka "death by YAML").
 
