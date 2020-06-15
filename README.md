@@ -53,25 +53,25 @@ Click Submit when done.
 
 8. Now that we've updated the service definition we can move on to setting up the Environment we're going to deploy to. Click on your application name in the popcorn trail on the upper left of the Harness UI to return to your Application main screen. Then click on Environments to setup an environment to deploy to. 
 
-13. Click Add Environment button and give your environment a name that starts with your student ID. Set the environment type to non-production.
+9. Click Add Environment button and give your environment a name that starts with your student ID. Set the environment type to non-production.
 
 ![Environment](/images/canary-evn.jpg)
 
 When you click submit that will take you to the Environment Overview screen. 
 
-14. Add an Infrastructure Definition. Give it a name that starts with your student ID. Select Kubernetes Cluster for your Cloud Provider Type, and set the deployment type to Kubernetes. Then you can select the Cloud Provider we have setup for this workshop. We've labeled the correct one "use-this-cluster-for-the-training." Be sure to change the Namespace setting to your student ID as well!
+10. Add an Infrastructure Definition. Give it a name that starts with your student ID. Select Kubernetes Cluster for your Cloud Provider Type, and set the deployment type to Kubernetes. Then you can select the Cloud Provider we have setup for this workshop. We've labeled the correct one "use-this-cluster-for-the-training." Be sure to change the Namespace setting to your student ID as well!
 
 ![infra_def](/images/envdefcan.jpg)
 
 Now that we've setup a Service (what we're deploying) and an Environment (where we're deploying). Our next step is to build the canary deployment.
 
-15. Using the popcorn trail switch to Workflows in your application. Click on the Add Workflow buttom. Give your new workflow a name that includes your student ID. Select Canary Deployment for your Workflow Type, and finally select the Environment you setup in the previous step.
+11. Using the popcorn trail switch to Workflows in your application. Click on the Add Workflow buttom. Give your new workflow a name that includes your student ID. Select Canary Deployment for your Workflow Type, and finally select the Environment you setup in the previous step.
 
 ![workflow](/images/workflowsetupcan.jpg)
 
 Click submit when done. Now we are in our Workflow builder. Harness has setup an empty Canary template for us. Now let's fill it out.
 
-16. First we're going to add a Deployment Phase. Under Deployment Phases click on + Add Phase
+12. First we're going to add a Deployment Phase. Under Deployment Phases click on + Add Phase
 
 ![add phase](/images/addphasecan.jpg)
 
@@ -83,26 +83,13 @@ Click submit when done. Now your Workflow screen should look like this:
 
 ![deployment screen](/images/deployscreencan.jpg)
 
-17. Ok! Now we have the Deployment framework setup. First off we're going to configure the Canary Phase of the Workflow with a verification and rollback step. First up we're going to need to add a verification phase to our canary. (This is the step where we will consult metrics from Prometheus about our Canary. (TL;DR Prometheus is an open source metrics gathering agent and search engine for distributed systems.) To set this up we'll need to add a Verification step to our Canary Phase. In the Verify section of the Canary Phase click on Add Step. Your screen should look something like this:
+13. Ok! Now we have the Deployment framework setup. First off we're going to configure the Canary Phase of the Workflow with a verification and rollback step. First up we're going to need to add a verification phase to our canary. (This is the step where we will consult metrics from Prometheus about our Canary. (TL;DR Prometheus is an open source metrics gathering agent and search engine for distributed systems.) To set this up we'll need to add a Verification step to our Canary Phase. In the Verify section of the Canary Phase click on Add Step. Your screen should look something like this:
 
 ![add step](/images/addsteppromcan.jpg)
 
 If you don't see the Prometheus step listed just type "prom" in the search box and that should bring it up. Once it's there select it and click Next.
 
 18. Next we are going to configure the verification by specifying what metrics we're interested in. First specify the Prometheus server we setup called Prometheus CV. Next we're going to specify our first metric to monitor. 
-
-For the Metric Name specify "normal_call"
-
-For the Metric Type pick "Throughput" in the dropdown
-
-For Group Name specify "custom" 
-
-And for Query specify this:
-```io_harness_custom_metric_normal_call{kubernetes_pod_name="$hostName"}```
-
-It should look like this:
-
-![promsetup1](/images/promsetupcan.jpg)
 
 Now we need to add one more Metric to Monitor. Click on the + Add button under Metrics to Monitor and add a second metric with the following values:
 
@@ -114,6 +101,19 @@ For Group Name specify "custom"
 
 And for Query specify this:
 ```io_harness_custom_metric_error_call{kubernetes_pod_name="$hostName"}```
+
+Click on the +Add button to add an additional metric
+
+For the 2nd Metric:
+
+Metric Name specify "normal_call"
+
+For the Metric Type pick "Throughput" in the dropdown
+
+For Group Name specify "custom" 
+
+And for Query specify this:
+```io_harness_custom_metric_normal_call{kubernetes_pod_name="$hostName"}```
 
 When you're done it should look like this:
 
