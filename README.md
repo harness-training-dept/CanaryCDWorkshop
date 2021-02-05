@@ -89,9 +89,9 @@ Click submit when done. Now your Workflow screen should look like this:
 
 If you don't see the Prometheus step listed just type "prom" in the search box and that should bring it up. Once it's there select it and click Next.
 
-14. Next we are going to configure the verification by specifying what metrics we're interested in. First specify the Prometheus server we setup called Prometheus CV. Next we're going to specify our first metric to monitor. 
+14. Next we are going to configure the verification by specifying what metrics we're interested in. First specify the Prometheus server named for the workshop. Then we're going to specify our first metric to monitor. 
 
-Now we need to add one more Metric to Monitor. Click on the + Add button under Metrics to Monitor and add a second metric with the following values:
+Now we need to configure Metric to Monitor. Add a metric with the following values:
 
 For the Metric Name specify "error_call"
 
@@ -119,7 +119,7 @@ When you're done it should look like this:
 
 ![two metrics](/images/metricstomonitorcan.jpg)
 
-15. Set your analysis time to 5 mins and your algorhytim to "very sensitive". 
+15. Set your analysis time to 5 mins and your algorithm to "very sensitive". 
 
 Should look like this:
 
@@ -129,7 +129,7 @@ Hit Submit when done. Your Canary Phase should now look like this:
 
 ![verifyfinal](/images/verifyfinal.jpg)
 
-16. Now we need to specify a Roll Back Setp to delete the Canary if the deployment fails. Under Rollback Steps select "Add Step" under "1. Deploy" Search for the "Delete" step by typing del into the search box. Select the Delete command and click Next.
+16. Now we need to specify a Roll Back Step to delete the Canary if the deployment fails. Under Rollback Steps select "Add Step" under "1. Deploy" Search for the "Delete" step by typing del into the search box. Select the Delete command and click Next.
 
 ![delsearch](/images/delsearchcan.jpg)
 
@@ -167,7 +167,7 @@ Variable Name: metric_verification
 
 Default Value: Prometheus
 
-All else leave as it. 
+Yes that capital "P" is required for the default value. All else leave as it. 
 
 Should look exactly like this before you hit Save. 
 
