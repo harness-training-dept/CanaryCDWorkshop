@@ -47,7 +47,7 @@ Set the Branch to ```master```
 
 Set the File/Folder path to ```cvlab```
 
-![edit deployment.yaml](/images/remotemanifests.jpg)
+![edit deployment.yaml](/images/remotemanifests2.jpg)
 
 Click Submit when done.
 
