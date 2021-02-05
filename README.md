@@ -3,19 +3,19 @@
 ## Lab 1 - Login to app.harness.io and familiarize yourself with the environment
 
 
-1. Load up your Chrome web browser and login to https://app.harness.io with the username and password from your lab sheet. 
+1. Load up Chrome or Firefox web browser and login to https://app.harness.io with the username and password from your lab sheet. 
 
 2. Click around and explore the GUI. Please note depending on the user role you have in your own organization's Harness implementation you may not have access to the menus and settings you see here in our training setup. 
 
-5. We will be visiting the Setup menu most often. Click in there and explore the different connectors and setting options. 
+5. We will be visiting the Setup menu most often. It's located on the lefthand side of the UI. Click in there and explore the different connectors and setting options. 
 
 6. Ask your instructor if you don't understand the use of any configuration or dashboard.
 
 ## Lab 2 - Setup a Harness Application for our canary deployment
 
-1. Click on the Setup menu in the upper right hand corner of the Harness GUI.
+1. Go back to the main Setup page in the UI.
 
-2. Click on the Add Application button and fill out the information for your new application. Be sure to use your student ID in the name of your application so you can find it easily later.
+2. Click on the Add Application button and fill out the information for your new application. Be sure to use your student ID as the name of your application so you can find it easily later.
 
 ![Application Setup](/images/application.jpg)
 
@@ -27,7 +27,7 @@
 
 Click submit. That will take you to the Service Overview.
 
-5. In the Service Overview screen click on Add Artifact Source and select Docker Registry. For Source Server select Harness Docker Hub. This is a sample connection to the public hub.docker.com domain setup automatically for harness.io. In non-training testing environments you would most likely delete this connector. For the Docker image name put harness/cv-demo . That is pointing to the Docker image we made for this lab.
+5. In the Service Overview screen click on Add Artifact Source and select Docker Registry. For Source Server select Harness Docker Hub. This is a sample connection to the public hub.docker.com. For the Docker image name put harness/cv-demo . That is pointing to the Docker image we made for this lab.
 
 ![Artifact Source](/images/cvdemosource.png)
 
@@ -41,11 +41,11 @@ Click submit when done.
 
 Set the Manifest Format to ```Kubernetes Resource Specs in YAML format```
 
-Set the Source Repository to ```CVProm (https://github.com/harness-training-dept/cvprom)```
+Set the Source Repository to ```admin_labs_git (https://github.com/harness-training-dept/admin_workloads)```
 
 Set the Branch to ```master```
 
-Set the File/Folder path to ```workload```
+Set the File/Folder path to ```cvlab```
 
 ![edit deployment.yaml](/images/remotemanifests.jpg)
 
